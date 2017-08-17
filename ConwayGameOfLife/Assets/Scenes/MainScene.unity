@@ -42,7 +42,7 @@ RenderSettings:
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 11
+  serializedVersion: 9
   m_GIWorkflowMode: 1
   m_GISettings:
     serializedVersion: 2
@@ -54,7 +54,7 @@ LightmapSettings:
     m_EnableBakedLightmaps: 0
     m_EnableRealtimeLightmaps: 0
   m_LightmapEditorSettings:
-    serializedVersion: 9
+    serializedVersion: 8
     m_Resolution: 2
     m_BakeResolution: 40
     m_TextureWidth: 1024
@@ -87,7 +87,7 @@ LightmapSettings:
     m_PVRFilteringAtrousNormalSigma: 1
     m_PVRFilteringAtrousPositionSigma: 1
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_ShadowMaskMode: 2
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -141,26 +141,18 @@ MonoBehaviour:
   gridHeight: 64
   autoProgress: 1
   autoProgressionTime: 1
-  useRandomStart: 1
+  useRandomStart: 0
   initialLivingGridItems:
-  - x: 10
-    y: 4
-  - x: 64
-    y: 64
-  - x: 0
-    y: 0
-  - x: 10
-    y: 10
-  - x: 10
-    y: 11
-  - x: 11
-    y: 10
   - x: 20
-    y: 10
-  - x: 20
-    y: 11
-  - x: 19
-    y: 10
+    y: 40
+  - x: 21
+    y: 40
+  - x: 22
+    y: 40
+  - x: 22
+    y: 39
+  - x: 21
+    y: 38
 --- !u!4 &652260931
 Transform:
   m_ObjectHideFlags: 0
@@ -223,7 +215,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 1, g: 1, b: 1, a: 0}
+  m_BackGroundColor: {r: 0.4, g: 0.4, b: 0.4, a: 1}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
