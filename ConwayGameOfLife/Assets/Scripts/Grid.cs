@@ -2,13 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-//	TODO: Adjust camera based on user-specified information, right now camera is hard-coded
 public class Grid : MonoBehaviour
 {
-	[Header("Prefabs for the cubes")]
-	public GameObject liveCube;
-	public GameObject deadCube;
-	private string liveCubeIdentifier, deadCubeIdentifier;
+	[Header("Cube prefab")]
+	public GameObject conwayCube;
 
 	[Header("Grid settings")]
 	public uint gridWidth;
@@ -74,6 +71,7 @@ public class Grid : MonoBehaviour
 	{
 		GameObject cube = Instantiate (prefab, transform);
 		cube.transform.position = new Vector3 (x, -y, 0);
+		conwayCube.GetComponent<ConwayCube>().UseDeadMaterial();
 		return cube;
 	}
 
@@ -81,27 +79,23 @@ public class Grid : MonoBehaviour
 	private void SetupGrid()
 	{
 		cubes = new GameObject[gridHeight, gridWidth];
-		liveCubeIdentifier = liveCube.name;
-		deadCubeIdentifier = deadCube.name;
 		for (uint y = 0; y < gridHeight; y++) {
 			for (uint x = 0; x < gridWidth; x++) {
-				cubes [y, x] = CreateCubeAt (deadCube, x, y);
+				cubes [y, x] = CreateCubeAt (conwayCube, x, y);
 			}
 		}
 	}
 
 	//	Check if the given prefab object is a Dead Cube
-	//	TODO: This is really hacky and can be better than string comparison
 	private bool IsDeadCube(GameObject cube)
 	{
-		return cube.name.Contains (deadCubeIdentifier);
+		return cube.GetComponent<ConwayCube>().IsDead;
 	}
 
 	//	Check if the given prefab object if a Live Cube
-	//	TODO: This is really hacky and can be better than string comparison
 	private bool IsLiveCube(GameObject cube)
 	{
-		return cube.name.Contains (liveCubeIdentifier);
+		return cube.GetComponent<ConwayCube>().IsLiving;
 	}
 
 	//	Render updates to the visual grid
@@ -112,11 +106,9 @@ public class Grid : MonoBehaviour
 				GameObject cube = cubes [y, x];
 				bool gridStatus = grid [y, x];
 				if (gridStatus && !IsLiveCube (cube)) {
-					Destroy (cube);
-					cubes [y, x] = CreateCubeAt (liveCube, x, y);
+					cube.GetComponent<ConwayCube>().UseLivingMaterial();
 				} else if (!gridStatus && !IsDeadCube (cube)) {
-					Destroy (cube);
-					cubes [y, x] = CreateCubeAt (deadCube, x, y);
+					cube.GetComponent<ConwayCube>().UseDeadMaterial();
 				}
 			}
 		}

@@ -135,8 +135,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7310a4f544d74e27969cb8731222390, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  liveCube: {fileID: 1666560993290732, guid: 7778c7b41e6304bbcaaeb8b4e6d8801a, type: 2}
-  deadCube: {fileID: 1182415880064176, guid: c6b243d452d0b439c909cf78b222ed4a, type: 2}
+  conwayCube: {fileID: 1246725039213480, guid: 73272c7ddb8937e4ea2b4c0bb5cddade, type: 2}
   gridWidth: 64
   gridHeight: 64
   autoProgress: 1
