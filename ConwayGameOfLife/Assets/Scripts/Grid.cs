@@ -38,9 +38,10 @@ public class Grid : MonoBehaviour
 
 	//	Get number of neighbors that are alive
 	private uint GetLivingNeighborsCount(uint x, uint y){
-		List<GridItem> neighbors = GetNeighborsAt (x, y);
+		List<GridItem> neighbors = GetNeighborsAt(x, y);
 		uint livingCount = 0;
-		foreach (GridItem neighbor in neighbors) {
+		foreach (GridItem neighbor in neighbors)
+		{
 			if (grid [neighbor.y, neighbor.x])
 				livingCount++;
 		}
@@ -52,15 +53,18 @@ public class Grid : MonoBehaviour
 		List<GridItem> neighbors = new List<GridItem> ();
 
 		//	Sanity bounds check
-		if (!IsPointInBounds (x, y)) {
+		if (!IsPointInBounds(x,y)) {
 			return neighbors;
 		}
-
-		//	Check if all neighbors are in bounds
-		if (IsPointInBounds(x, y - 1)) neighbors.Add(new GridItem(x, y - 1));
-		if (IsPointInBounds(x, y + 1)) neighbors.Add(new GridItem(x, y + 1));
-		if (IsPointInBounds(x - 1, y)) neighbors.Add(new GridItem(x - 1, y));
-		if (IsPointInBounds(x + 1, y)) neighbors.Add(new GridItem(x + 1, y));
+		
+		for( uint xCheck=x-1; xCheck<=x+1; xCheck++ )
+		{
+			for( uint yCheck=y-1; yCheck<=y+1; yCheck++ )
+			{
+				if (IsPointInBounds(xCheck, yCheck) && (xCheck!=x || yCheck!=y) )
+					neighbors.Add(new GridItem(xCheck, yCheck));
+			}
+		}
 
 		return neighbors;
 	}

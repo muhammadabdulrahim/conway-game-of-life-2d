@@ -140,8 +140,8 @@ MonoBehaviour:
   gridWidth: 64
   gridHeight: 64
   autoProgress: 1
-  autoProgressionTime: 1
-  useRandomStart: 0
+  autoProgressionTime: 0.2
+  useRandomStart: 1
   initialLivingGridItems:
   - x: 20
     y: 40
