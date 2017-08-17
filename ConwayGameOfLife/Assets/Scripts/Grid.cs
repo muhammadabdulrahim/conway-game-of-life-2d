@@ -57,14 +57,10 @@ public class Grid : MonoBehaviour
 		}
 
 		//	Check if all neighbors are in bounds
-		//	TODO: The Wikipedia page doesn't seem to indicate diagonals as neighbors
-		//	TODO: If ranges change from 9 neighbors max to 4, don't do it in a loop
-		for (uint xCheck = x - 1; xCheck <= x + 1; xCheck++) {
-			for (uint yCheck = y - 1; yCheck <= y + 1; yCheck++) {
-				if (IsPointInBounds (xCheck, yCheck) && (xCheck!=x && yCheck!=y))
-					neighbors.Add (new GridItem (xCheck, yCheck));
-			}
-		}
+		if (IsPointInBounds(x, y - 1)) neighbors.Add(new GridItem(x, y - 1));
+		if (IsPointInBounds(x, y + 1)) neighbors.Add(new GridItem(x, y + 1));
+		if (IsPointInBounds(x - 1, y)) neighbors.Add(new GridItem(x - 1, y));
+		if (IsPointInBounds(x + 1, y)) neighbors.Add(new GridItem(x + 1, y));
 
 		return neighbors;
 	}
